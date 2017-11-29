@@ -54,8 +54,8 @@ add_action( 'init' , 'powertic_oceanwp_add_categories_for_attachments' );
   foreach ( get_post_types( '', 'names' ) as $post_type ) {
     $types[] = $post_type;
   }
-	$types[] = "landing-pages";
-	$types[] = "thankyou-pages";
+	$types[] = "landing_pages";
+	$types[] = "thankyou_pages";
  	// Return
  	return $types;
  }
