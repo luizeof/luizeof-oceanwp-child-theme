@@ -94,10 +94,10 @@ add_action( 'admin_head', 'powertic_oceanwp_hide_update_notice_to_all_but_admin'
   foreach ( get_post_types( '', 'names' ) as $post_type ) {
     $types[] = $post_type;
   }
-
+	$types[] = "landing-pages";
+	$types[] = "thankyou-pages";
  	// Return
  	return $types;
-
  }
  add_filter( 'ocean_main_metaboxes_post_types', 'powertic_oceanwp_metabox', 20 );
 
@@ -123,7 +123,7 @@ add_action( 'wp_enqueue_scripts', 'oceanwp_child_enqueue_parent_style' );
 
 
 require 'plugin-update-checker/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4p3_Factory::buildUpdateChecker(
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://github.com/powerticmkt/powertic-oceanwp-child-theme/',
 	__FILE__,
 	'powertic-oceanwp-child-theme'
