@@ -9,7 +9,7 @@
  * file is included before the parent theme's file, so the child theme
  * functions would be used.
  *
- * Text Domain: oceanwp
+ * Text Domain: powertic_oceanwp
  * @link http://codex.wordpress.org/Plugin_API
  *
  */
