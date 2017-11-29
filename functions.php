@@ -18,6 +18,11 @@
  * Add Lead Class to First Paragraph
  */
 
+
+require_once "landing-pages-custom-post-type.php";
+
+require_once "thankyou-pages-custom-post-type.php";
+
 function first_paragraph( $content ) {
 	return preg_replace( '/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1 );
 }
@@ -26,7 +31,6 @@ add_filter( 'the_content', 'first_paragraph' );
  /**
  * Excluding pages from search
  */
-
 function exclude_pages_from_search() {
 	global $wp_post_types;
 	$wp_post_types['page']->exclude_from_search = true;
@@ -37,7 +41,6 @@ add_action( 'init', 'exclude_pages_from_search' );
  /**
  * Add Custom Excerpt to Pages
  */
-
 function add_page_excerpt() {
 	add_post_type_support( 'page', array( 'excerpt' ) );
 }
@@ -47,7 +50,6 @@ add_action( 'init', 'add_page_excerpt' );
  /**
  * Add Tags for Attachments
  */
-
 function add_tags_for_attachments() {
 	register_taxonomy_for_object_type( 'post_tag', 'attachment' );
 }
@@ -57,7 +59,6 @@ add_action( 'init' , 'add_tags_for_attachments' );
  /**
  * Add Categories for Attachments
  */
-
 function add_categories_for_attachments() {
 	register_taxonomy_for_object_type( 'category', 'attachment' );
 }
@@ -66,7 +67,6 @@ add_action( 'init' , 'add_categories_for_attachments' );
  /**
  * Remove All Dashboard Widgets
  */
-
 function remove_dashboard_widgets() {
 	global $wp_meta_boxes;
 	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'] );
@@ -79,7 +79,6 @@ add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
  /**
  * Hide WordPress Update Nag to All But Admins
  */
-
 function hide_update_notice_to_all_but_admin() {
 	if ( !current_user_can( 'update_core' ) ) {
 		remove_action( 'admin_notices', 'update_nag', 3 );
