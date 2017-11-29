@@ -19,32 +19,14 @@
  */
 
 
-require_once "landing-pages-custom-post-type.php";
+include "landing-pages-custom-post-type.php";
 
-require_once "thankyou-pages-custom-post-type.php";
+include "thankyou-pages-custom-post-type.php";
 
 function powertic_oceanwp_first_paragraph( $content ) {
 	return preg_replace( '/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1 );
 }
 add_filter( 'the_content', 'powertic_oceanwp_first_paragraph' );
-
- /**
- * Excluding pages from search
- */
-function powertic_oceanwp_exclude_pages_from_search() {
-	global $wp_post_types;
-	$wp_post_types['page']->exclude_from_search = true;
-}
-add_action( 'init', 'powertic_oceanwp_exclude_pages_from_search' );
-
-
- /**
- * Add Custom Excerpt to Pages
- */
-function powertic_oceanwp_add_page_excerpt() {
-	add_post_type_support( 'page', array( 'excerpt' ) );
-}
-add_action( 'init', 'powertic_oceanwp_add_page_excerpt' );
 
 
  /**
@@ -63,28 +45,6 @@ function powertic_oceanwp_add_categories_for_attachments() {
 	register_taxonomy_for_object_type( 'category', 'attachment' );
 }
 add_action( 'init' , 'powertic_oceanwp_add_categories_for_attachments' );
-
- /**
- * Remove All Dashboard Widgets
- */
-function powertic_oceanwp_remove_dashboard_widgets() {
-	global $wp_meta_boxes;
-	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'] );
-	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
-	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_drafts'] );
-	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
-}
-add_action( 'wp_dashboard_setup', 'powertic_oceanwp_remove_dashboard_widgets' );
-
- /**
- * Hide WordPress Update Nag to All But Admins
- */
-function powertic_oceanwp_hide_update_notice_to_all_but_admin() {
-	if ( !current_user_can( 'update_core' ) ) {
-		remove_action( 'admin_notices', 'update_nag', 3 );
-	}
-}
-add_action( 'admin_head', 'powertic_oceanwp_hide_update_notice_to_all_but_admin', 1 );
 
 
  /**
