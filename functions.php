@@ -84,7 +84,7 @@ add_action( 'wp_enqueue_scripts', 'oceanwp_child_enqueue_parent_style' );
 
 require 'plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://github.com/luizeof/oceanwp-child-theme',
+	'https://github.com/luizeof/luizeof-oceanwp-child-theme',
 	__FILE__,
 	'oceanwp-child-theme'
 );
