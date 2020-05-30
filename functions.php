@@ -14,15 +14,11 @@
  *
  */
 
+
+
  /**
  * Add Lead Class to First Paragraph
  */
-
-
-include "landing-pages-custom-post-type.php";
-
-include "thankyou-pages-custom-post-type.php";
-
 function powertic_oceanwp_first_paragraph( $content ) {
 	return preg_replace( '/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1 );
 }
@@ -48,7 +44,7 @@ add_action( 'init' , 'powertic_oceanwp_add_categories_for_attachments' );
 
 
  /**
-  * Add the OceanWP Settings metabox in your CPT by Powertic
+  * Add the OceanWP Settings metabox in your CPT
   */
  function powertic_oceanwp_metabox( $types ) {
   foreach ( get_post_types( '', 'names' ) as $post_type ) {
