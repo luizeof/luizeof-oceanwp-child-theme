@@ -14,8 +14,6 @@
  *
  */
 
-
-
  /**
  * Add Lead Class to First Paragraph
  */
